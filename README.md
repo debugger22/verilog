@@ -1,4 +1,4 @@
-secret-hipster
+Verilog
 ==============
 
 My Verilog snippests
