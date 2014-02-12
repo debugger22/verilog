@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date:    14:50:14 01/23/2014 
+// Create Date:    14:15:45 01/30/2014 
 // Design Name: 
-// Module Name:    D_FF 
+// Module Name:    multiplexer 
 // Project Name: 
 // Target Devices: 
 // Tool versions: 
@@ -18,15 +18,23 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module D_FF(input clk, input reset, input regWrite, input d, input decOut1b, output reg q);
-	always @ (negedge clk)
-	begin
-		if(reset==1)
-			q=0;
-		else
-			if(regWrite == 1 && decOut1b==1)
-			begin
-				q=d;
-			end
-		end
+module multiplexer(compIn, compOut, op, op2);
+	 input [7:0] compIn;
+    input [7:0] compOut;
+    input op;
+    output reg [7:0] op2;
+	 
+	 always@(compIn,compOut,op)
+		 begin
+			if(op)
+				begin
+					op2 = compIn;
+				end
+			else
+				begin
+					op2 = compOut;
+				end
+		 end
+		 
+
 endmodule

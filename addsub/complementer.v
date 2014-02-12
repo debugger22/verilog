@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date:    14:50:14 01/23/2014 
+// Create Date:    14:11:17 01/30/2014 
 // Design Name: 
-// Module Name:    D_FF 
+// Module Name:    complementer 
 // Project Name: 
 // Target Devices: 
 // Tool versions: 
@@ -18,15 +18,13 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module D_FF(input clk, input reset, input regWrite, input d, input decOut1b, output reg q);
-	always @ (negedge clk)
-	begin
-		if(reset==1)
-			q=0;
-		else
-			if(regWrite == 1 && decOut1b==1)
-			begin
-				q=d;
-			end
+module complementer(compIn, compOut);
+	input [7:0] compIn;
+	output reg [7:0] compOut;
+	
+	always@(compIn,compOut)
+		begin
+			compOut = ~compIn + 8'd1;
 		end
+		
 endmodule
